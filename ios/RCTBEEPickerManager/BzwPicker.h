@@ -22,7 +22,7 @@ typedef void(^backBolock)(NSDictionary * );
 
 @property (strong, nonatomic) NSDictionary *pickerDic;//一开始进来的字典
 
-@property(strong,nonatomic)NSArray *dataDry;//一进来的就没有数组和字典的区别肯定是一个字典
+@property(strong,nonatomic)NSMutableArray *dataDry;//一进来的就没有数组和字典的区别肯定是一个字典
 
 @property (strong, nonatomic) NSMutableArray *provinceArray;//省、市
 @property (strong, nonatomic) NSMutableArray *cityArray;//市，县
@@ -81,4 +81,5 @@ typedef void(^backBolock)(NSDictionary * );
        pickerToolBarFontSize:(NSString *)pickerToolBarFontSize  pickerFontSize:(NSString *)pickerFontSize  pickerFontColor:(NSArray *)pickerFontColor;
 
 -(void)selectRow;
+-(void)setColumnItems:(NSArray *)items index:(NSInteger *)index;
 @end

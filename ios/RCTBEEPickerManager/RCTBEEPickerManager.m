@@ -94,6 +94,14 @@ RCT_EXPORT_METHOD(_init:(NSDictionary *)indic){
     
 }
 
+RCT_EXPORT_METHOD(setColumnItems:(NSArray *)items index:(NSInteger *)index){
+    if (self.pick) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_pick setColumnItems:items index:index];
+        });
+    }
+}
+
 RCT_EXPORT_METHOD(show){
     if (self.pick) {
         

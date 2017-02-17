@@ -466,7 +466,7 @@
 -(void)getStyle
 {
     
-    self.dataDry=[self.pickerDic objectForKey:@"pickerData"];
+    self.dataDry=[NSMutableArray arrayWithArray:[self.pickerDic objectForKey:@"pickerData"]];
     
     id firstobject=[self.dataDry firstObject];
     
@@ -569,6 +569,17 @@
         }
     }
 }
+
+
+// 设置数据
+-(void)setColumnItems:(NSArray *)items index:(NSInteger *)index
+{
+    [self.dataDry replaceObjectAtIndex:index withObject:items];
+    self.noCorreArry = [self.dataDry copy];
+    [_pick reloadAllComponents];
+}
+
+
 
 //按了取消按钮
 -(void)cancleAction

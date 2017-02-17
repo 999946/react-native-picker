@@ -365,6 +365,17 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
     }
 
     @ReactMethod
+    public void setColumnItems(ReadableArray array, int index, Callback callback) {
+        if (dialog == null) {
+            if (callback != null) {
+                callback.invoke(ERROR_NOT_INIT);
+            }
+            return;
+        }
+        pickerViewAlone.setLoopViewItems(array, index);
+    }
+
+    @ReactMethod
     public void select(ReadableArray array, Callback callback) {
         if (dialog == null) {
             if (callback != null) {
