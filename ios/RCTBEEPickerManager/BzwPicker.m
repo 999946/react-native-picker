@@ -617,8 +617,7 @@
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     
     if (self.backArry.count>0) {
-        
-        [dic setValue:self.backArry forKey:@"selectedValue"];
+        [dic setValue:[self getselectValueArry] forKey:@"selectedValue"];
         [dic setValue:@"confirm" forKey:@"type"];
         NSMutableArray *arry=[[NSMutableArray alloc]init];
         [dic setValue:[self getselectIndexArry] forKey:@"selectedIndex"];
@@ -628,7 +627,7 @@
         
     }else{
         [self getNOselectinfo];
-        [dic setValue:self.backArry forKey:@"selectedValue"];
+        [dic setValue:[self getselectValueArry] forKey:@"selectedValue"];
         [dic setValue:@"confirm" forKey:@"type"];
         
         [dic setValue:[self getselectIndexArry] forKey:@"selectedIndex"];
@@ -927,6 +926,17 @@
         NSNumber *num=[[NSNumber alloc]initWithInteger:[self.pick selectedRowInComponent:i]];
         [arry addObject:num];
         
+    }
+    return arry;
+}
+
+-(NSArray *)getselectValueArry{
+    
+    NSMutableArray *arry=[[NSMutableArray alloc]init];
+    for (NSInteger i=0; i<_seleNum; i++) {
+        NSInteger *index=[self.pick selectedRowInComponent:i];
+        NSArray *items=[self.dataDry objectAtIndex: i];
+        [arry addObject:[items objectAtIndex:index]];
     }
     return arry;
 }
